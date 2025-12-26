@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package domain;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "simplebank/internal/proto";
+
+message EventEnvelope {
+  string event_id = 1;
+  string aggregate_id = 2;
+  string type_name = 3;
+  bytes payload = 4;
+  google.protobuf.Timestamp occurred_at = 5;
+  map<string, string> metadata = 6;
+}

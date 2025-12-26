@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package domain;
+
+option go_package = "simplebank/internal/proto";
+
+message AccountCreated {
+  string account_id = 1;
+  int64 balance = 2;
+  string currency = 3;
+  string status = 4;
+}
+
+message MoneyDeposited {
+  string account_id = 1;
+  int64 amount = 2;
+}
+
+message MoneyWithdrawn {
+  string account_id = 1;
+  int64 amount = 2;
+}

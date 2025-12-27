@@ -1,9 +1,7 @@
-﻿package event_sourcing
+package event_sourcing
 
 import (
 	"simplebank/internal/common"
-
-	pb "simplebank/internal/proto"
 
 	"github.com/google/uuid"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -12,16 +10,16 @@ import (
 
 type Aggregate struct {
 	version int64
-	changes []*pb.EventEnvelope
+	changes []*EventEnvelope
 }
 
-func (a *Aggregate) TrackChanges(aggregateID string, e proto.Message) error {
+func (a *Aggregate) TrackChange(aggregateID string, e proto.Message) error {
 	payloadBytes, err := protojson.Marshal(e)
 	if err != nil {
 		return err
 	}
 
-	envelope := &pb.EventEnvelope{
+	envelope := &EventEnvelope{
 		EventId:     uuid.New().String(),
 		AggregateId: aggregateID,
 		TypeName:    common.GetEventName(e),
@@ -34,7 +32,7 @@ func (a *Aggregate) TrackChanges(aggregateID string, e proto.Message) error {
 	return nil
 }
 
-func (a *Aggregate) GetChanges() []*pb.EventEnvelope {
+func (a *Aggregate) GetChanges() []*EventEnvelope {
 	return a.changes
 }
 

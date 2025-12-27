@@ -1,10 +1,10 @@
-﻿package domain
+package domain
 
 import (
 	"fmt"
 	"simplebank/internal/common"
-	es "simplebank/internal/hephaistos/event_sourcing"
-	pb "simplebank/internal/proto"
+	pb "simplebank/internal/domain/events"
+	es "simplebank/pkg/hephaistos/core/event_sourcing"
 
 	"github.com/google/uuid"
 	"google.golang.org/protobuf/proto"
@@ -104,7 +104,7 @@ func (a *Account) Withdraw(amount int64) error {
 }
 
 func (a *Account) Commit(event proto.Message) error {
-	err := a.TrackChanges(a.id.String(), event)
+	err := a.TrackChange(a.id.String(), event)
 	if err != nil {
 		return err
 	}
@@ -117,7 +117,6 @@ func (a *Account) Commit(event proto.Message) error {
 func (a *Account) Apply(event proto.Message) {
 	switch e := event.(type) {
 	case *pb.AccountCreated:
-		a.id = uuid.MustParse(e.AccountId)
 		a.balance = e.Balance
 		a.currency = Currency(e.Currency)
 		a.accountStatus = AccountStatus(e.Status)

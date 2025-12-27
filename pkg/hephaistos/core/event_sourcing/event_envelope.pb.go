@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: internal/proto/event_envelope.proto
+// source: pkg/hephaistos/core/event_sourcing/event_envelope.proto
 
-package proto
+package event_sourcing
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -36,7 +36,7 @@ type EventEnvelope struct {
 
 func (x *EventEnvelope) Reset() {
 	*x = EventEnvelope{}
-	mi := &file_internal_proto_event_envelope_proto_msgTypes[0]
+	mi := &file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -48,7 +48,7 @@ func (x *EventEnvelope) String() string {
 func (*EventEnvelope) ProtoMessage() {}
 
 func (x *EventEnvelope) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_proto_event_envelope_proto_msgTypes[0]
+	mi := &file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -61,7 +61,7 @@ func (x *EventEnvelope) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EventEnvelope.ProtoReflect.Descriptor instead.
 func (*EventEnvelope) Descriptor() ([]byte, []int) {
-	return file_internal_proto_event_envelope_proto_rawDescGZIP(), []int{0}
+	return file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *EventEnvelope) GetEventId() string {
@@ -106,44 +106,44 @@ func (x *EventEnvelope) GetMetadata() map[string]string {
 	return nil
 }
 
-var File_internal_proto_event_envelope_proto protoreflect.FileDescriptor
+var File_pkg_hephaistos_core_event_sourcing_event_envelope_proto protoreflect.FileDescriptor
 
-const file_internal_proto_event_envelope_proto_rawDesc = "" +
+const file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDesc = "" +
 	"\n" +
-	"#internal/proto/event_envelope.proto\x12\x06domain\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbf\x02\n" +
+	"7pkg/hephaistos/core/event_sourcing/event_envelope.proto\x12\x0eevent_sourcing\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc7\x02\n" +
 	"\rEventEnvelope\x12\x19\n" +
 	"\bevent_id\x18\x01 \x01(\tR\aeventId\x12!\n" +
 	"\faggregate_id\x18\x02 \x01(\tR\vaggregateId\x12\x1b\n" +
 	"\ttype_name\x18\x03 \x01(\tR\btypeName\x12\x18\n" +
 	"\apayload\x18\x04 \x01(\fR\apayload\x12;\n" +
 	"\voccurred_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
-	"occurredAt\x12?\n" +
-	"\bmetadata\x18\x06 \x03(\v2#.domain.EventEnvelope.MetadataEntryR\bmetadata\x1a;\n" +
+	"occurredAt\x12G\n" +
+	"\bmetadata\x18\x06 \x03(\v2+.event_sourcing.EventEnvelope.MetadataEntryR\bmetadata\x1a;\n" +
 	"\rMetadataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\x1bZ\x19simplebank/internal/protob\x06proto3"
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B/Z-simplebank/pkg/hephaistos/core/event_sourcingb\x06proto3"
 
 var (
-	file_internal_proto_event_envelope_proto_rawDescOnce sync.Once
-	file_internal_proto_event_envelope_proto_rawDescData []byte
+	file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDescOnce sync.Once
+	file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDescData []byte
 )
 
-func file_internal_proto_event_envelope_proto_rawDescGZIP() []byte {
-	file_internal_proto_event_envelope_proto_rawDescOnce.Do(func() {
-		file_internal_proto_event_envelope_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_proto_event_envelope_proto_rawDesc), len(file_internal_proto_event_envelope_proto_rawDesc)))
+func file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDescGZIP() []byte {
+	file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDescOnce.Do(func() {
+		file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDesc), len(file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDesc)))
 	})
-	return file_internal_proto_event_envelope_proto_rawDescData
+	return file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDescData
 }
 
-var file_internal_proto_event_envelope_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_internal_proto_event_envelope_proto_goTypes = []any{
-	(*EventEnvelope)(nil),         // 0: domain.EventEnvelope
-	nil,                           // 1: domain.EventEnvelope.MetadataEntry
+var file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_goTypes = []any{
+	(*EventEnvelope)(nil),         // 0: event_sourcing.EventEnvelope
+	nil,                           // 1: event_sourcing.EventEnvelope.MetadataEntry
 	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
 }
-var file_internal_proto_event_envelope_proto_depIdxs = []int32{
-	2, // 0: domain.EventEnvelope.occurred_at:type_name -> google.protobuf.Timestamp
-	1, // 1: domain.EventEnvelope.metadata:type_name -> domain.EventEnvelope.MetadataEntry
+var file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_depIdxs = []int32{
+	2, // 0: event_sourcing.EventEnvelope.occurred_at:type_name -> google.protobuf.Timestamp
+	1, // 1: event_sourcing.EventEnvelope.metadata:type_name -> event_sourcing.EventEnvelope.MetadataEntry
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -151,26 +151,26 @@ var file_internal_proto_event_envelope_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_internal_proto_event_envelope_proto_init() }
-func file_internal_proto_event_envelope_proto_init() {
-	if File_internal_proto_event_envelope_proto != nil {
+func init() { file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_init() }
+func file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_init() {
+	if File_pkg_hephaistos_core_event_sourcing_event_envelope_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_proto_event_envelope_proto_rawDesc), len(file_internal_proto_event_envelope_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDesc), len(file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_internal_proto_event_envelope_proto_goTypes,
-		DependencyIndexes: file_internal_proto_event_envelope_proto_depIdxs,
-		MessageInfos:      file_internal_proto_event_envelope_proto_msgTypes,
+		GoTypes:           file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_goTypes,
+		DependencyIndexes: file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_depIdxs,
+		MessageInfos:      file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_msgTypes,
 	}.Build()
-	File_internal_proto_event_envelope_proto = out.File
-	file_internal_proto_event_envelope_proto_goTypes = nil
-	file_internal_proto_event_envelope_proto_depIdxs = nil
+	File_pkg_hephaistos_core_event_sourcing_event_envelope_proto = out.File
+	file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_goTypes = nil
+	file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_depIdxs = nil
 }

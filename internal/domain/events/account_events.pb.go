@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: internal/proto/account_events.proto
+// source: internal/domain/events/account_events.proto
 
-package proto
+package events
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -33,7 +33,7 @@ type AccountCreated struct {
 
 func (x *AccountCreated) Reset() {
 	*x = AccountCreated{}
-	mi := &file_internal_proto_account_events_proto_msgTypes[0]
+	mi := &file_internal_domain_events_account_events_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +45,7 @@ func (x *AccountCreated) String() string {
 func (*AccountCreated) ProtoMessage() {}
 
 func (x *AccountCreated) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_proto_account_events_proto_msgTypes[0]
+	mi := &file_internal_domain_events_account_events_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *AccountCreated) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AccountCreated.ProtoReflect.Descriptor instead.
 func (*AccountCreated) Descriptor() ([]byte, []int) {
-	return file_internal_proto_account_events_proto_rawDescGZIP(), []int{0}
+	return file_internal_domain_events_account_events_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *AccountCreated) GetAccountId() string {
@@ -99,7 +99,7 @@ type MoneyDeposited struct {
 
 func (x *MoneyDeposited) Reset() {
 	*x = MoneyDeposited{}
-	mi := &file_internal_proto_account_events_proto_msgTypes[1]
+	mi := &file_internal_domain_events_account_events_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -111,7 +111,7 @@ func (x *MoneyDeposited) String() string {
 func (*MoneyDeposited) ProtoMessage() {}
 
 func (x *MoneyDeposited) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_proto_account_events_proto_msgTypes[1]
+	mi := &file_internal_domain_events_account_events_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -124,7 +124,7 @@ func (x *MoneyDeposited) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MoneyDeposited.ProtoReflect.Descriptor instead.
 func (*MoneyDeposited) Descriptor() ([]byte, []int) {
-	return file_internal_proto_account_events_proto_rawDescGZIP(), []int{1}
+	return file_internal_domain_events_account_events_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *MoneyDeposited) GetAccountId() string {
@@ -151,7 +151,7 @@ type MoneyWithdrawn struct {
 
 func (x *MoneyWithdrawn) Reset() {
 	*x = MoneyWithdrawn{}
-	mi := &file_internal_proto_account_events_proto_msgTypes[2]
+	mi := &file_internal_domain_events_account_events_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -163,7 +163,7 @@ func (x *MoneyWithdrawn) String() string {
 func (*MoneyWithdrawn) ProtoMessage() {}
 
 func (x *MoneyWithdrawn) ProtoReflect() protoreflect.Message {
-	mi := &file_internal_proto_account_events_proto_msgTypes[2]
+	mi := &file_internal_domain_events_account_events_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -176,7 +176,7 @@ func (x *MoneyWithdrawn) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MoneyWithdrawn.ProtoReflect.Descriptor instead.
 func (*MoneyWithdrawn) Descriptor() ([]byte, []int) {
-	return file_internal_proto_account_events_proto_rawDescGZIP(), []int{2}
+	return file_internal_domain_events_account_events_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *MoneyWithdrawn) GetAccountId() string {
@@ -193,11 +193,11 @@ func (x *MoneyWithdrawn) GetAmount() int64 {
 	return 0
 }
 
-var File_internal_proto_account_events_proto protoreflect.FileDescriptor
+var File_internal_domain_events_account_events_proto protoreflect.FileDescriptor
 
-const file_internal_proto_account_events_proto_rawDesc = "" +
+const file_internal_domain_events_account_events_proto_rawDesc = "" +
 	"\n" +
-	"#internal/proto/account_events.proto\x12\x06domain\"}\n" +
+	"+internal/domain/events/account_events.proto\x12\x06events\"}\n" +
 	"\x0eAccountCreated\x12\x1d\n" +
 	"\n" +
 	"account_id\x18\x01 \x01(\tR\taccountId\x12\x18\n" +
@@ -211,27 +211,27 @@ const file_internal_proto_account_events_proto_rawDesc = "" +
 	"\x0eMoneyWithdrawn\x12\x1d\n" +
 	"\n" +
 	"account_id\x18\x01 \x01(\tR\taccountId\x12\x16\n" +
-	"\x06amount\x18\x02 \x01(\x03R\x06amountB\x1bZ\x19simplebank/internal/protob\x06proto3"
+	"\x06amount\x18\x02 \x01(\x03R\x06amountB#Z!simplebank/internal/domain/eventsb\x06proto3"
 
 var (
-	file_internal_proto_account_events_proto_rawDescOnce sync.Once
-	file_internal_proto_account_events_proto_rawDescData []byte
+	file_internal_domain_events_account_events_proto_rawDescOnce sync.Once
+	file_internal_domain_events_account_events_proto_rawDescData []byte
 )
 
-func file_internal_proto_account_events_proto_rawDescGZIP() []byte {
-	file_internal_proto_account_events_proto_rawDescOnce.Do(func() {
-		file_internal_proto_account_events_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_proto_account_events_proto_rawDesc), len(file_internal_proto_account_events_proto_rawDesc)))
+func file_internal_domain_events_account_events_proto_rawDescGZIP() []byte {
+	file_internal_domain_events_account_events_proto_rawDescOnce.Do(func() {
+		file_internal_domain_events_account_events_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_domain_events_account_events_proto_rawDesc), len(file_internal_domain_events_account_events_proto_rawDesc)))
 	})
-	return file_internal_proto_account_events_proto_rawDescData
+	return file_internal_domain_events_account_events_proto_rawDescData
 }
 
-var file_internal_proto_account_events_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_internal_proto_account_events_proto_goTypes = []any{
-	(*AccountCreated)(nil), // 0: domain.AccountCreated
-	(*MoneyDeposited)(nil), // 1: domain.MoneyDeposited
-	(*MoneyWithdrawn)(nil), // 2: domain.MoneyWithdrawn
+var file_internal_domain_events_account_events_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_internal_domain_events_account_events_proto_goTypes = []any{
+	(*AccountCreated)(nil), // 0: events.AccountCreated
+	(*MoneyDeposited)(nil), // 1: events.MoneyDeposited
+	(*MoneyWithdrawn)(nil), // 2: events.MoneyWithdrawn
 }
-var file_internal_proto_account_events_proto_depIdxs = []int32{
+var file_internal_domain_events_account_events_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -239,26 +239,26 @@ var file_internal_proto_account_events_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_internal_proto_account_events_proto_init() }
-func file_internal_proto_account_events_proto_init() {
-	if File_internal_proto_account_events_proto != nil {
+func init() { file_internal_domain_events_account_events_proto_init() }
+func file_internal_domain_events_account_events_proto_init() {
+	if File_internal_domain_events_account_events_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_proto_account_events_proto_rawDesc), len(file_internal_proto_account_events_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_domain_events_account_events_proto_rawDesc), len(file_internal_domain_events_account_events_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_internal_proto_account_events_proto_goTypes,
-		DependencyIndexes: file_internal_proto_account_events_proto_depIdxs,
-		MessageInfos:      file_internal_proto_account_events_proto_msgTypes,
+		GoTypes:           file_internal_domain_events_account_events_proto_goTypes,
+		DependencyIndexes: file_internal_domain_events_account_events_proto_depIdxs,
+		MessageInfos:      file_internal_domain_events_account_events_proto_msgTypes,
 	}.Build()
-	File_internal_proto_account_events_proto = out.File
-	file_internal_proto_account_events_proto_goTypes = nil
-	file_internal_proto_account_events_proto_depIdxs = nil
+	File_internal_domain_events_account_events_proto = out.File
+	file_internal_domain_events_account_events_proto_goTypes = nil
+	file_internal_domain_events_account_events_proto_depIdxs = nil
 }

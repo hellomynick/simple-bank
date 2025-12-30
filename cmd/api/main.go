@@ -1,4 +1,4 @@
-﻿package api
+package api
 
 import (
 	"log/slog"
@@ -16,7 +16,6 @@ func main() {
 	}
 
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, opts))
-
 	slog.SetDefault(logger)
 
 	r := chi.NewRouter()

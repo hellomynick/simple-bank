@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"simplebank/internal/common"
 	pb "simplebank/internal/domain/events"
-	es "simplebank/pkg/hephaistos/core/event_sourcing"
+	es "simplebank/pkg/hephaistos/core"
 
 	"github.com/google/uuid"
 	"google.golang.org/protobuf/proto"
@@ -40,7 +40,6 @@ func NewAccount(balance int64, currencyStr string) (*Account, error) {
 	}
 
 	account := &Account{
-		id:        uuid.New(),
 		Aggregate: &es.Aggregate{},
 	}
 
@@ -49,15 +48,19 @@ func NewAccount(balance int64, currencyStr string) (*Account, error) {
 		return nil, fmt.Errorf("invalid currency")
 	}
 
+	id, err := uuid.NewV7()
+	if err != nil {
+		return nil, err
+	}
+
 	event := &pb.AccountCreated{
-		AccountId: account.id.String(),
+		AccountId: id.String(),
 		Balance:   balance,
 		Currency:  string(currency),
 		Status:    string(AccountStatusActive),
 	}
 
-	err := account.Commit(event)
-	if err != nil {
+	if err := account.Commit(event); err != nil {
 		return nil, err
 	}
 
@@ -104,12 +107,12 @@ func (a *Account) Withdraw(amount int64) error {
 }
 
 func (a *Account) Commit(event proto.Message) error {
+	a.Apply(event)
+
 	err := a.TrackChange(a.id.String(), event)
 	if err != nil {
 		return err
 	}
-
-	a.Apply(event)
 
 	return nil
 }
@@ -117,6 +120,7 @@ func (a *Account) Commit(event proto.Message) error {
 func (a *Account) Apply(event proto.Message) {
 	switch e := event.(type) {
 	case *pb.AccountCreated:
+		a.id = uuid.MustParse(e.AccountId)
 		a.balance = e.Balance
 		a.currency = Currency(e.Currency)
 		a.accountStatus = AccountStatus(e.Status)

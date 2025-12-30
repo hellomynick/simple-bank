@@ -23,15 +23,16 @@ const (
 )
 
 type EventEnvelope struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	EventId       string                 `protobuf:"bytes,1,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
-	AggregateId   string                 `protobuf:"bytes,2,opt,name=aggregate_id,json=aggregateId,proto3" json:"aggregate_id,omitempty"`
-	TypeName      string                 `protobuf:"bytes,3,opt,name=type_name,json=typeName,proto3" json:"type_name,omitempty"`
-	Payload       []byte                 `protobuf:"bytes,4,opt,name=payload,proto3" json:"payload,omitempty"`
-	OccurredAt    *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=occurred_at,json=occurredAt,proto3" json:"occurred_at,omitempty"`
-	Metadata      map[string]string      `protobuf:"bytes,6,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Id               string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	AggregateId      string                 `protobuf:"bytes,2,opt,name=aggregate_id,json=aggregateId,proto3" json:"aggregate_id,omitempty"`
+	AggregateVersion int64                  `protobuf:"varint,3,opt,name=aggregate_version,json=aggregateVersion,proto3" json:"aggregate_version,omitempty"`
+	TypeName         string                 `protobuf:"bytes,4,opt,name=type_name,json=typeName,proto3" json:"type_name,omitempty"`
+	Payload          []byte                 `protobuf:"bytes,5,opt,name=payload,proto3" json:"payload,omitempty"`
+	OccurredAt       *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=occurred_at,json=occurredAt,proto3" json:"occurred_at,omitempty"`
+	Metadata         map[string]string      `protobuf:"bytes,7,rep,name=metadata,proto3" json:"metadata,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *EventEnvelope) Reset() {
@@ -64,9 +65,9 @@ func (*EventEnvelope) Descriptor() ([]byte, []int) {
 	return file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *EventEnvelope) GetEventId() string {
+func (x *EventEnvelope) GetId() string {
 	if x != nil {
-		return x.EventId
+		return x.Id
 	}
 	return ""
 }
@@ -76,6 +77,13 @@ func (x *EventEnvelope) GetAggregateId() string {
 		return x.AggregateId
 	}
 	return ""
+}
+
+func (x *EventEnvelope) GetAggregateVersion() int64 {
+	if x != nil {
+		return x.AggregateVersion
+	}
+	return 0
 }
 
 func (x *EventEnvelope) GetTypeName() string {
@@ -110,15 +118,16 @@ var File_pkg_hephaistos_core_event_sourcing_event_envelope_proto protoreflect.Fi
 
 const file_pkg_hephaistos_core_event_sourcing_event_envelope_proto_rawDesc = "" +
 	"\n" +
-	"7pkg/hephaistos/core/event_sourcing/event_envelope.proto\x12\x0eevent_sourcing\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc7\x02\n" +
-	"\rEventEnvelope\x12\x19\n" +
-	"\bevent_id\x18\x01 \x01(\tR\aeventId\x12!\n" +
-	"\faggregate_id\x18\x02 \x01(\tR\vaggregateId\x12\x1b\n" +
-	"\ttype_name\x18\x03 \x01(\tR\btypeName\x12\x18\n" +
-	"\apayload\x18\x04 \x01(\fR\apayload\x12;\n" +
-	"\voccurred_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
+	"7pkg/hephaistos/core/event_sourcing/event_envelope.proto\x12\x0eevent_sourcing\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe9\x02\n" +
+	"\rEventEnvelope\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
+	"\faggregate_id\x18\x02 \x01(\tR\vaggregateId\x12+\n" +
+	"\x11aggregate_version\x18\x03 \x01(\x03R\x10aggregateVersion\x12\x1b\n" +
+	"\ttype_name\x18\x04 \x01(\tR\btypeName\x12\x18\n" +
+	"\apayload\x18\x05 \x01(\fR\apayload\x12;\n" +
+	"\voccurred_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"occurredAt\x12G\n" +
-	"\bmetadata\x18\x06 \x03(\v2+.event_sourcing.EventEnvelope.MetadataEntryR\bmetadata\x1a;\n" +
+	"\bmetadata\x18\a \x03(\v2+.event_sourcing.EventEnvelope.MetadataEntryR\bmetadata\x1a;\n" +
 	"\rMetadataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B/Z-simplebank/pkg/hephaistos/core/event_sourcingb\x06proto3"

@@ -1,4 +1,9 @@
-﻿proto:
+﻿gen: proto sqlc
+
+proto:
 	buf generate
 
-.PHONY: proto
+sqlc:
+	sqlc generate
+
+.PHONY: gen proto sqlc

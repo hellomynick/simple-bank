@@ -7,10 +7,11 @@ import "google/protobuf/timestamp.proto";
 option go_package = "simplebank/pkg/hephaistos/core/event_sourcing";
 
 message EventEnvelope {
-  string event_id = 1;
+  string id = 1;
   string aggregate_id = 2;
-  string type_name = 3;
-  bytes payload = 4;
-  google.protobuf.Timestamp occurred_at = 5;
-  map<string, string> metadata = 6;
+  int64 aggregate_version = 3;
+  string type_name = 4;
+  bytes payload = 5;
+  google.protobuf.Timestamp occurred_at = 6;
+  map<string, string> metadata = 7;
 }

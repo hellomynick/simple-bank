@@ -1,7 +1,8 @@
-package event_sourcing
+package core
 
 import (
 	"simplebank/internal/common"
+	"simplebank/pkg/hephaistos/core/event_sourcing"
 
 	"github.com/google/uuid"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -10,7 +11,7 @@ import (
 
 type Aggregate struct {
 	version int64
-	changes []*EventEnvelope
+	changes []*event_sourcing.EventEnvelope
 }
 
 func (a *Aggregate) TrackChange(aggregateID string, e proto.Message) error {
@@ -19,20 +20,23 @@ func (a *Aggregate) TrackChange(aggregateID string, e proto.Message) error {
 		return err
 	}
 
-	envelope := &EventEnvelope{
-		EventId:     uuid.New().String(),
-		AggregateId: aggregateID,
-		TypeName:    common.GetEventName(e),
-		Payload:     payloadBytes,
+	nextVersion := a.version + 1
+
+	envelope := &event_sourcing.EventEnvelope{
+		Id:               uuid.New().String(),
+		AggregateId:      aggregateID,
+		AggregateVersion: nextVersion,
+		TypeName:         common.GetEventName(e),
+		Payload:          payloadBytes,
 	}
 
 	a.changes = append(a.changes, envelope)
-	a.version++
+	a.version = nextVersion
 
 	return nil
 }
 
-func (a *Aggregate) GetChanges() []*EventEnvelope {
+func (a *Aggregate) GetChanges() []*event_sourcing.EventEnvelope {
 	return a.changes
 }
 
